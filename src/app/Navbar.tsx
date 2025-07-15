@@ -7,22 +7,22 @@ export default function Navbar() {
   const { data: session } = useSession()
 
   return (
-    <nav className="neumorphism-container p-4 flex justify-between items-center">
-      <Link href="/" className="text-2xl font-bold">
+    <nav className="bg-gray-800 p-4 flex justify-between items-center">
+      <Link href="/" className="text-2xl font-bold text-white">
         Meeting Scheduler
       </Link>
       <div>
         {session ? (
           <>
-            <Link href="/admin" className="neumorphism-button">
+            <Link href="/admin" className="btn btn-primary">
               Admin
             </Link>
-            <button onClick={() => signOut()} className="neumorphism-button ml-4">
+            <button onClick={() => signOut()} className="btn btn-primary ml-4">
               Sign Out
             </button>
           </>
         ) : (
-          <Link href="/api/auth/signin" className="neumorphism-button">
+          <Link href="/api/auth/signin" className="btn btn-primary">
             Sign In
           </Link>
         )}

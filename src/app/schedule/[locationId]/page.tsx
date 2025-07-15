@@ -66,51 +66,53 @@ export default function SchedulePage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div className="neumorphism-container p-8 text-center">
-        <h1 className="text-4xl font-bold">Schedule a Meeting at {location.name}</h1>
+    <main className="container mx-auto p-8">
+      <div className="card">
+        <h1 className="text-4xl font-bold text-white">Schedule a Meeting at {location.name}</h1>
         <form onSubmit={handleScheduleMeeting} className="mt-8">
-          <div className="flex flex-col">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              value={date.toISOString().split('T')[0]}
-              onChange={(e) => setDate(new Date(e.target.value))}
-              className="neumorphism-input mt-2"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <label htmlFor="date" className="text-white">Date</label>
+              <input
+                type="date"
+                id="date"
+                value={date.toISOString().split('T')[0]}
+                onChange={(e) => setDate(new Date(e.target.value))}
+                className="input mt-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="startTime" className="text-white">Start Time</label>
+              <input
+                type="time"
+                id="startTime"
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
+                className="input mt-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="endTime" className="text-white">End Time</label>
+              <input
+                type="time"
+                id="endTime"
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
+                className="input mt-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="attendees" className="text-white">Attendees (comma-separated emails)</label>
+              <input
+                type="text"
+                id="attendees"
+                value={attendees}
+                onChange={(e) => setAttendees(e.target.value)}
+                className="input mt-2"
+              />
+            </div>
           </div>
-          <div className="flex flex-col mt-4">
-            <label htmlFor="startTime">Start Time</label>
-            <input
-              type="time"
-              id="startTime"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-              className="neumorphism-input mt-2"
-            />
-          </div>
-          <div className="flex flex-col mt-4">
-            <label htmlFor="endTime">End Time</label>
-            <input
-              type="time"
-              id="endTime"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-              className="neumorphism-input mt-2"
-            />
-          </div>
-          <div className="flex flex-col mt-4">
-            <label htmlFor="attendees">Attendees (comma-separated emails)</label>
-            <input
-              type="text"
-              id="attendees"
-              value={attendees}
-              onChange={(e) => setAttendees(e.target.value)}
-              className="neumorphism-input mt-2"
-            />
-          </div>
-          <button type="submit" className="neumorphism-button mt-8">
+          <button type="submit" className="btn btn-primary mt-8">
             Schedule Meeting
           </button>
         </form>

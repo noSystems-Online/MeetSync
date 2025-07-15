@@ -41,31 +41,31 @@ export default function AdminPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div className="neumorphism-container p-8 text-center">
-        <h1 className="text-4xl font-bold">Admin Page</h1>
-        <p>Welcome, {session?.user?.email}</p>
+    <main className="container mx-auto p-8">
+      <div className="card">
+        <h1 className="text-4xl font-bold text-white">Admin Page</h1>
+        <p className="text-gray-400">Welcome, {session?.user?.email}</p>
 
         <div className="mt-8">
-          <h2 className="text-2xl font-bold">Locations</h2>
+          <h2 className="text-2xl font-bold text-white">Locations</h2>
           <form onSubmit={handleAddLocation} className="mt-4 flex">
             <input
               type="text"
               value={newLocation}
               onChange={(e) => setNewLocation(e.target.value)}
-              className="neumorphism-input"
+              className="input"
               placeholder="Add a new location"
             />
             <button
               type="submit"
-              className="neumorphism-button ml-4"
+              className="btn btn-primary ml-4"
             >
               Add
             </button>
           </form>
           <ul className="mt-4">
             {locations.map((location) => (
-              <li key={location._id} className="neumorphism-container mt-2 p-2">
+              <li key={location._id} className="card mt-2 p-2">
                 {location.name}
               </li>
             ))}
