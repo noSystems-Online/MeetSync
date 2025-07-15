@@ -63,32 +63,34 @@ export default function SchedulePage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-4xl font-bold">Schedule a Meeting at {location.name}</h1>
-      <form onSubmit={handleScheduleMeeting} className="mt-8">
-        <div className="flex flex-col">
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            id="date"
-            value={date.toISOString().split('T')[0]}
-            onChange={(e) => setDate(new Date(e.target.value))}
-            className="border-2 border-gray-300 p-2 rounded-md"
-          />
-        </div>
-        <div className="flex flex-col mt-4">
-          <label htmlFor="time">Time</label>
-          <input
-            type="time"
-            id="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            className="border-2 border-gray-300 p-2 rounded-md"
-          />
-        </div>
-        <button type="submit" className="mt-8 bg-blue-500 text-white p-4 rounded-md">
-          Schedule Meeting
-        </button>
-      </form>
+      <div className="neumorphism-container p-8 text-center">
+        <h1 className="text-4xl font-bold">Schedule a Meeting at {location.name}</h1>
+        <form onSubmit={handleScheduleMeeting} className="mt-8">
+          <div className="flex flex-col">
+            <label htmlFor="date">Date</label>
+            <input
+              type="date"
+              id="date"
+              value={date.toISOString().split('T')[0]}
+              onChange={(e) => setDate(new Date(e.target.value))}
+              className="neumorphism-input mt-2"
+            />
+          </div>
+          <div className="flex flex-col mt-4">
+            <label htmlFor="time">Time</label>
+            <input
+              type="time"
+              id="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className="neumorphism-input mt-2"
+            />
+          </div>
+          <button type="submit" className="neumorphism-button mt-8">
+            Schedule Meeting
+          </button>
+        </form>
+      </div>
     </main>
   )
 }

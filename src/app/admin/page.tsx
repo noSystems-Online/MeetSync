@@ -42,33 +42,35 @@ export default function AdminPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-4xl font-bold">Admin Page</h1>
-      <p>Welcome, {session?.user?.email}</p>
+      <div className="neumorphism-container p-8 text-center">
+        <h1 className="text-4xl font-bold">Admin Page</h1>
+        <p>Welcome, {session?.user?.email}</p>
 
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold">Locations</h2>
-        <form onSubmit={handleAddLocation} className="mt-4 flex">
-          <input
-            type="text"
-            value={newLocation}
-            onChange={(e) => setNewLocation(e.target.value)}
-            className="border-2 border-gray-300 p-2 rounded-l-md"
-            placeholder="Add a new location"
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white p-2 rounded-r-md"
-          >
-            Add
-          </button>
-        </form>
-        <ul className="mt-4">
-          {locations.map((location) => (
-            <li key={location._id} className="border-b py-2">
-              {location.name}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold">Locations</h2>
+          <form onSubmit={handleAddLocation} className="mt-4 flex">
+            <input
+              type="text"
+              value={newLocation}
+              onChange={(e) => setNewLocation(e.target.value)}
+              className="neumorphism-input"
+              placeholder="Add a new location"
+            />
+            <button
+              type="submit"
+              className="neumorphism-button ml-4"
+            >
+              Add
+            </button>
+          </form>
+          <ul className="mt-4">
+            {locations.map((location) => (
+              <li key={location._id} className="neumorphism-container mt-2 p-2">
+                {location.name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </main>
   )
