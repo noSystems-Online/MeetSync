@@ -1,7 +1,7 @@
 'use client'
 
-import { useSession, signIn, signOut } from 'next-auth/react'
-import { useState, useEffect } from 'react'
+import { useSession, signIn } from 'next-auth/react'
+import { useState } from 'react'
 import Link from 'next/link'
 
 export default function HomePage({ locations }) {
@@ -17,13 +17,6 @@ export default function HomePage({ locations }) {
   if (session) {
     return (
       <main className="flex min-h-screen flex-col items-center p-24">
-        <div className="absolute top-4 right-4">
-          <p>Signed in as {session.user.email}</p>
-          <button onClick={() => signOut()} className="neumorphism-button ml-4">Sign out</button>
-          <Link href="/admin" className="neumorphism-button ml-4">
-            Admin
-          </Link>
-        </div>
         <h1 className="text-4xl font-bold">Schedule a Meeting</h1>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {locations.map((location) => (

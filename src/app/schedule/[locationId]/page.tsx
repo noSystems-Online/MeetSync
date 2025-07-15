@@ -17,7 +17,9 @@ export default function SchedulePage() {
   const { locationId } = params
   const [location, setLocation] = useState(null)
   const [date, setDate] = useState(new Date())
-  const [time, setTime] = useState('')
+  const [startTime, setStartTime] = useState('')
+  const [endTime, setEndTime] = useState('')
+  const [attendees, setAttendees] = useState('')
 
   useEffect(() => {
     if (!locationId) return
@@ -31,8 +33,8 @@ export default function SchedulePage() {
 
   const handleScheduleMeeting = async (e) => {
     e.preventDefault()
-    if (!time) {
-      alert('Please select a time')
+    if (!startTime || !endTime) {
+      alert('Please select a start and end time')
       return
     }
 
@@ -44,8 +46,10 @@ export default function SchedulePage() {
       body: JSON.stringify({
         locationId,
         date: date.toISOString().split('T')[0],
-        time,
+        startTime,
+        endTime,
         user: session.user,
+        attendees: attendees.split(',').map(email => email.trim()),
       }),
     })
 
@@ -77,12 +81,32 @@ export default function SchedulePage() {
             />
           </div>
           <div className="flex flex-col mt-4">
-            <label htmlFor="time">Time</label>
+            <label htmlFor="startTime">Start Time</label>
             <input
               type="time"
-              id="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
+              id="startTime"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              className="neumorphism-input mt-2"
+            />
+          </div>
+          <div className="flex flex-col mt-4">
+            <label htmlFor="endTime">End Time</label>
+            <input
+              type="time"
+              id="endTime"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              className="neumorphism-input mt-2"
+            />
+          </div>
+          <div className="flex flex-col mt-4">
+            <label htmlFor="attendees">Attendees (comma-separated emails)</label>
+            <input
+              type="text"
+              id="attendees"
+              value={attendees}
+              onChange={(e) => setAttendees(e.target.value)}
               className="neumorphism-input mt-2"
             />
           </div>
